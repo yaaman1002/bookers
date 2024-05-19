@@ -1,2 +1,8 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h1>ようこそBookersへ！</h1>
+  <%= form_with model: @book, method: :post do |f| %>
+    <p>
+      <strong>bookers</strong>
+      では、さまざまな書籍にあなたの意見や</p>
+      <p>印象を共有し交換する事ができます</p>
+       　<%= f.submit 'start' %>
+       　<% end %>
