@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-         <title>WebCampBackendNew</title>
-          <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
-    <h1>Books</h1>
-     <table>
+ <h1>Books</h1>
+    <table>
         <thread>
             <tr>
                 <th>Title</th>
@@ -16,49 +9,42 @@
         </thread>
         <tbody>
             <tr>
+                <% @books.each do |book| %>
                 <td>リーダブルコード</td>
                 <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-                <td><a class="show_221700" href="/books/221700"></a>Show</td>
-                <td><a class="edit_221700" href="/books/221700/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221700" rel="nofollow" data-method="delete" href="books/221700">Delete</a></td>
+                <td><%=link_to 'Show', books_path(book.id) %></td>
+                <td><%=link_to 'Edit',edit_book_path(book.id) %></td>
+                <td><%=link_to 'Destroy', books_path(book.id) %></td>
+                <% end %>
             </tr>
                 <td>トラブル知らずのシステム設計</td>
                 <td>システム設計の要点を図解で説明してくれます</td>
-                <td><a class="show_221701" href="/books/221701"></a>Show</td>
-                <td><a class="edit_221700" href="/books/221701/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221701" rel="nofollow" data-method="delete" href="books/221701">Delete</a></td>
             </tr>
                 <td>たのしいRuby</td>
                 <td>Rubyの入門におすすめです</td>
-                <td><a class="show_221702" href="/books/221702"></a>Show</td>
-                <td><a class="edit_221702" href="/books/221702/edit"></a>Edit</td>
-                <td<a data-confirm="Are you sure?" class="destroy_221702" rel="nofollow" data-method="delete" href="books/221702">Delete</a></td>
+               
             </tr>
                 <td>入門Git</td>
                 <td>Gitについての基本操作から内部構造まで解説してくれます</td>
-                <td><a class="show_221703" href="/books/221703"></a>Show</td>
-                <td><a class="edit_221703" href="/books/221703/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221703" rel="nofollow" data-method="delete" href="books/221703">Delete</a></td>
             </tr>
                 <td>アルゴリズム図鑑</td>
                 <td>アルゴリズムについてカラーイラストでしっかり解説してくれます</td>
-                <td><a class="show_221704" href="/books/221704"></a>Show</td>
-                <td><a class="edit_221704" href="/books/221704/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221704" rel="nofollow" data-method="delete" href="books/221704">Delete</a></td>
             </tr>
                 <td>達人プログラマー</td>
                 <td>プログラマ入門者は必読！</td>
-                <td><a class="show_221705" href="/books/221705"></a>Show</td>
-                <td><a class="edit_221705" href="/books/221705/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221703" rel="nofollow" data-method="delete" href="books/221705">Delete</a></td>
+               
             </tr>
                 <td>データベース実践入門</td>
                 <td>効率的なSQL文を教えてくれます</td>
-                <td><a class="show_221706" href="/books/221706"></a>Show</td>
-                <td><a class="edit_221706" href="/books/221706/edit"></a>Edit</td>
-                <td><a data-confirm="Are you sure?" class="destroy_221706" rel="nofollow" data-method="delete" href="books/221706">Delete</a></td>
-        </tbody>
+        </tbody>　
      </table>
      <h2>New book</h2>
-     
+     <p>
+     <%= form_with model: @book, url: '/books', method: :post do |f| %></p>
+  <h4>title</h4>
+  <%= f.text_field :title %>
+  <h4>body</h4>
+  <%= f.text_area :body %>
+   <%= f.submit 'Create Book' %>
+  <% end %>
 </html>
