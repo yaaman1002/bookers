@@ -9,9 +9,10 @@ body{
        font-family: verdana, arial, helvetica, sans-serif;
 }
 
-p{
+p,ul{
     font-size: 13px;
     line-height: 18px;
+    display:block;
     margin:33px;
 }
 
@@ -31,6 +32,7 @@ a:visited {
     margin:-7px;
     margin-bottom: 0;
     background-color: #c00;
+    color:#fff;
 }
 
 #error_explanation{
@@ -42,6 +44,12 @@ a:visited {
     background-color: #f0f0f0;
 }
 
-:notice{
+#notice{
     color:green;
+}
+
+#field_with_errors{
+    padding:2px;
+    background-color: #c00;
+    display:table;
 }
