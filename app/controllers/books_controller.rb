@@ -30,8 +30,8 @@ class BooksController < ApplicationController
   def destroy
     @book=Book.find(params[:id])
     if @book.destroy
-      flash[:alert]="Book was successfully destroyed."
-      redirect_to books_path(@book.id)
+      flash[:notice]="Book was successfully destroyed."
+      redirect_to books_path
     end
   end
   
@@ -40,6 +40,8 @@ class BooksController < ApplicationController
      if @book.update(book_params)
        flash[:notice]="Book was successfully updated."
      redirect_to book_path(params[:id])
+     else 
+        render :edit
      end
   end
   
